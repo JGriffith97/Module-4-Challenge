@@ -7,3 +7,5 @@
 // Selectors, potentially, to access CSS content?
 
 // conditions for quiz; correct, wrong, if, if else, etc.
+
+// When botton is clicked, hide button, allow quiz questions to fill the space
