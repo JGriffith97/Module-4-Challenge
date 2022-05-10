@@ -18,13 +18,14 @@ body {
   border-bottom: solid 5px navy;
 }
 
-.showHigh,
-.timer {
+#showHigh,
+#timer {
   background-color: black;
   color: white;
   flex: 50%;
   padding: 5px 0 5px 0;
   border: solid 3px antiquewhite;
+  font-family: monospace, Courier, 'Courier New';
 }
 
 .quiz-container {
@@ -32,9 +33,11 @@ body {
   display: flex;
   flex-direction: column;
   background-color: lightblue;
-  padding: 25px 25px 25px 25px;
-  margin: 0 40% 0 40%;
+  padding: 25px 25px 15px 25px;
+  margin: 15rem auto 0 auto;
   text-align: left;
+  max-width: 20%;
+  border: ridge 4px silver;
 }
 
 .align-left {
@@ -48,4 +51,5 @@ body {
 
 .start {
   margin: 10px 0 0 0;
+  font-size: 20px;
 }
