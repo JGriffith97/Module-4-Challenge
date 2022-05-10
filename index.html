@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
   <head>
     <title>HTML/CSS/JS Code Quiz</title>
@@ -11,19 +11,21 @@
 
   <body>
     <!-- Header to access high-scores(?), see timer(?) -->
-    <header>
+    <!-- Commit highscores to local storage -->
+    <header class = "headContainer">
       <div class = "showHigh">HighScores</div>
       <div class = "timer">Timer: </div>
     </header>
 
       <main>
-      <!-- Quiz Area; ordered/unordered list? -->
-        <ul>Quiz Header
-          <li>Text Test</li>
-        </ul>
-
+        <div class="quiz-container">
+        <!-- Quiz Area; ordered/unordered list? -->
+          <ul class ="flex-1"><h3>Quiz Header</h3>
+            <li class ="align-left">Text Test</li>
+          </ul>
       <!-- Start Quiz Button -->
-      <button class = "start">Start</button>
+          <button class = "start">Start</button>
+        </div>
 
       <!-- Additional elements -->
       </main>
