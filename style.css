@@ -113,7 +113,7 @@ hr {
     border: ridge 4px silver;
   }
 
-  .quizQs {
+  #list {
     display: flex;
     position: relative;
     padding: 10px 0 10px 0;
