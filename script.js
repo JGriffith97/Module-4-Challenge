@@ -11,6 +11,19 @@ var questions1 = ["test", "test2", "test3", "test4"]
 
 // Query selector to access quiz area to change the quiz content
 // element(via var).appendChild(variable or element to be created)
+function startTimer() {
+  var timeLeft = 180;
+
+  var timeInterval = setInterval(function () {
+    timeLeft--;
+    timerEl.textContent = "Timer: " + timeLeft + "s Remaining."
+
+    if(timeLeft === -1) {
+      clearInterval(timeInterval);
+      quizDisplay();
+    }
+  }, 1000);
+}
 
 var quizStart = function() {
   var addLi = document.createElement("li");
@@ -31,24 +44,7 @@ var quizStart = function() {
 
 // When botton is clicked, hide button, allow quiz questions to fill the space
 startBtn.addEventListener("click", function() {
-  quizStart();
   startBtn.remove();
+  quizStart();
+  startTimer();
 });
-
-
-// Example code for adding elements
-/* <html>
-<body>
-<div id="new">
-<p id="p1">Tutorix</p>
-<p id="p2">Tutorialspoint</p>
-</div>
-<script>
-   var tag = document.createElement("p");
-   var text = document.createTextNode("Tutorix is the best e-learning platform");
-   tag.appendChild(text);
-   var element = document.getElementById("new");
-   element.appendChild(tag);
-</script>
-</body>
-</html> */
