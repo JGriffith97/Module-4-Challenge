@@ -52,10 +52,14 @@ body {
   border: ridge 4px silver;
 }
 
+hr {
+  border-color: darkgray;
+}
+
 .quizQs {
   display: flex;
   position: relative;
-  padding: 5px 0 0 0;
+  padding: 10px 0 0 0;
   text-align: left;
 }
 
@@ -108,11 +112,11 @@ body {
     width: 50%;
     border: ridge 4px silver;
   }
-  
+
   .quizQs {
     display: flex;
     position: relative;
-    padding: 5px 0 0 0;
+    padding: 10px 0 10px 0;
     text-align: left;
   }
   
