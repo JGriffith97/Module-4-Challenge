@@ -45,11 +45,15 @@ body {
   display: flex;
   flex-direction: column;
   background-color: lightblue;
-  padding: 25px 25px 15px 25px;
-  margin: 0 auto 0 auto;
-  text-align: left;
+  padding: 10px 25px 10px 25px;
+  margin: 0 auto auto auto;
+  text-align: center;
   width: 100%;
   border: ridge 4px silver;
+}
+
+h3 {
+  padding: 0 0 5px 0; 
 }
 
 hr {
@@ -64,8 +68,13 @@ hr {
 }
 
 .start {
-  margin: 10px 0 0 0;
+  margin: 3px 0 0 0;
   font-size: 20px;
+  width: 100%;
+}
+
+#list {
+  padding: 10px 0 5px 0;
 }
 
 /* Make media queries, slould try to build mobile first */
@@ -106,23 +115,33 @@ hr {
     display: flex;
     flex-direction: column;
     background-color: lightblue;
-    padding: 25px 25px 15px 25px;
+    padding: 20px 25px 15px 25px;
     margin: 15rem auto 0 auto;
     text-align: left;
     width: 50%;
     border: ridge 4px silver;
   }
 
+  .start {
+    width: 100%;
+  }
+
   #list {
     display: flex;
     position: relative;
-    padding: 10px 0 10px 0;
+    padding: 5px 0 5px 0;
     text-align: left;
-  }
-  
-  .start {
-    margin: 10px 0 0 0;
-    font-size: 20px;
+    flex-direction: column;
+    vertical-align: bottom;
   }
 
+  li {
+    display: flex;
+    justify-content: left;
+    padding: 5px 5px 3px 3px;
+    margin: 0 auto 5px 0;
+    background-color: darkblue;
+    color: white;
+    vertical-align: bottom;
+  }
 }
