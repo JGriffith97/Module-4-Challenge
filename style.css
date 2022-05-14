@@ -45,7 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: lightblue;
-  padding: 10px 25px 10px 25px;
+  padding: 15px 25px 5px 25px;
   margin: 0 auto auto auto;
   text-align: center;
   width: 100%;
@@ -75,6 +75,11 @@ hr {
 
 #list {
   padding: 10px 0 5px 0;
+}
+
+li {
+  border: solid black 4px;
+  border-radius: 10px;
 }
 
 /* Make media queries, slould try to build mobile first */
@@ -115,7 +120,7 @@ hr {
     display: flex;
     flex-direction: column;
     background-color: lightblue;
-    padding: 20px 25px 15px 25px;
+    padding: 15px 25px 5px 25px;
     margin: 15rem auto 0 auto;
     text-align: left;
     width: 50%;
@@ -129,7 +134,7 @@ hr {
   #list {
     display: flex;
     position: relative;
-    padding: 5px 0 5px 0;
+    padding: 8px 0 0px 0;
     text-align: left;
     flex-direction: column;
     vertical-align: bottom;
@@ -138,9 +143,9 @@ hr {
   li {
     display: flex;
     justify-content: left;
-    padding: 5px 5px 3px 3px;
-    margin: 0 auto 5px 0;
-    background-color: darkblue;
+    padding: 5px 8px 3px 8px;
+    margin: 0 auto 6px 0;
+    background-color: rgb(80, 80, 80);
     color: white;
     vertical-align: bottom;
   }
