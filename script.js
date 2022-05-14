@@ -107,13 +107,19 @@ const test = {
 // everythingObject.question1 -- preferred
 // everythingObject["question1"] 
 // Key value pair, objects = properties
-function addLi() {
-    for (let i = 0; i < answers.length; i++) {
-      var text = answers[i];
+function quizStart() {
+    for (let i = 0; i < q1Answers.length; i++) {
+      var text = q1Answers[i];
       var li = document.createElement("li")
       li.textContent = text;
       listEl.appendChild(li)
     }
+
+    quizHeadEl.textContent = questions[1]   
+}
+
+function clickEvent(userAnswer, questionNumber) {
+  
 }
 
 // Query selector to access quiz area to change the quiz content
@@ -147,6 +153,6 @@ function startTimer() {
 startBtn.addEventListener("click", function() {
   startBtn.remove()
   linePre.remove()
-  addLi()
+  quizStart()
   startTimer()
 })

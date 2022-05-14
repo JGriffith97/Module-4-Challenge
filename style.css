@@ -129,6 +129,7 @@ li {
 
   .start {
     width: 100%;
+    cursor: pointer;
   }
 
   #list {
@@ -148,5 +149,12 @@ li {
     background-color: rgb(80, 80, 80);
     color: white;
     vertical-align: bottom;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+  }
+
+  li:hover {
+    transition: 0.2s ease-in;
+    box-shadow: 1px 1px 5px black;
   }
 }
