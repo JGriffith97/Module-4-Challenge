@@ -7,7 +7,9 @@ var listEl = document.getElementById("list");
 var li = document.getElementById("li");
 var main = document.querySelector("main");
 var container = document.getElementById("quizContainer");
-var body = document.getElementById("content")
+var body = document.getElementById("content");
+
+var score;
 
 const questions = [
   "Commonly used date types do NOT include:",
@@ -17,66 +19,90 @@ const questions = [
   "A very useful tool used during development and debugging for printing content to the debugger is:"
 ]
 
-const q1Answers = [
-  "Strings", 
-  "Booleans",
-  "Alerts", 
-  "Numbers"
-]
+const q1Answers = ["Strings", "Booleans", "Alerts", "Numbers"]
 
-const q2Answers = [
-  "Quotes",
-  "Curly Brackets",
-  "Parentheses",
-  "Square Brackets"
-]
+const q2Answers = ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"]
 
-const q3Answers = [
-  "Numbers and Strings",
-  "Other Arrays",
-  "Booleans",
-  "All of the Above"
-]
+const q3Answers = ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"]
 
-const q4Amswers = [
-  "Commas",
-  "Curly Brackets",
-  "Quotes",
-  "Parentheses"
-]
+const q4Amswers = ["Commas", "Curly Brackets", "Quotes", "Parentheses"]
 
-const q5Answers = [
-  "JavaScript",
-  "Terminal/gitBash",
-  "for Loops",
-  "console.log"
-]
+const q5Answers = ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"]
 
-const test = {
+const quiz = {
   "question1": {
-    options: ["1", "2", "3", "4"],
-    answer: "1"
+    options: ["Strings", "Booleans", "Alerts", "Numbers"],
+    answer: "Alerts"
 
   }, 
   "question2": {
-    options: ["1", "2", "3", "4"],
-    answer: "2"
+    options: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
+    answer: "Parentheses"
 
   },
   "question3": {
-    options: ["1", "2", "3", "4"],
-    answer: "3"
+    options: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
+    answer: "All of the Above"
 
   }, 
   "question4": {
-    options: ["1", "2", "3", "4"],
-    answer: "4"
+    options: ["Commas", "Curly Brackets", "Quotes", "Parentheses"],
+    answer: "Quotes"
 
+  },
+  "question5": {
+    options: ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"],
+    answer: "console.log"
   }
 }
 
+function quizStart() {
+  for (let i = 0; i < q1Answers.length; i++) {
+    var text = q1Answers[i];
+    var li = document.createElement("li")
+    li.textContent = text;
+    listEl.appendChild(li)
+  }
+
+  function clickEvent(userAnswer, questionNumber) {
+    event.target.value
+    quizHeadEl.textContent = questions[0]
+    userAnswer = clickEvent
+    questionNumber = "question1"
+    if (userAnswer === quiz[questionNumber].answer) {
+      console.log("correct")
+    } else {
+      console.log("incorrect")
+      console.log("subtract from timer")
+    }
+  }
+  clickEvent("Alerts", "question1")
+}
+
+function startTimer() {
+  var timeLeft = 180;
+
+  var timeInterval = setInterval(function () {
+    timeLeft--;
+    timerEl.textContent = "Timer: " + timeLeft + "s Remaining."
+
+    if(timeLeft === 0) {
+      clearInterval(timeInterval);
+      quizEnd();
+    }
+  }, 1000);
+}
+
+startBtn.addEventListener("click", function() {
+  startBtn.remove()
+  linePre.remove()
+  quizStart()
+  startTimer()
+})
+
+
 // function clickEvent(userAnswer, questionNumber) {
-  //event.tartget.value
+  //event.target.value
   //userAnswer = "3"
   //questionNumber = "question1"
 
@@ -107,37 +133,9 @@ const test = {
 // everythingObject.question1 -- preferred
 // everythingObject["question1"] 
 // Key value pair, objects = properties
-function quizStart() {
-    for (let i = 0; i < q1Answers.length; i++) {
-      var text = q1Answers[i];
-      var li = document.createElement("li")
-      li.textContent = text;
-      listEl.appendChild(li)
-    }
-
-    quizHeadEl.textContent = questions[1]   
-}
-
-function clickEvent(userAnswer, questionNumber) {
-  
-}
 
 // Query selector to access quiz area to change the quiz content
 // element(via var).appendChild(variable or element to be created)
-function startTimer() {
-  var timeLeft = 180;
-
-  var timeInterval = setInterval(function () {
-    timeLeft--;
-    timerEl.textContent = "Timer: " + timeLeft + "s Remaining."
-
-    if(timeLeft === 0) {
-      clearInterval(timeInterval);
-      quizEnd();
-    }
-  }, 1000);
-}
-
 // Array.isArray will tell if an object is an array
 // variable declaring the timer
 // variable declaring the timer count
@@ -150,9 +148,3 @@ function startTimer() {
 // Show highscores via javascript-created div? 
 
 // When botton is clicked, hide button, allow quiz questions to fill the space
-startBtn.addEventListener("click", function() {
-  startBtn.remove()
-  linePre.remove()
-  quizStart()
-  startTimer()
-})
