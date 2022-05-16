@@ -8,8 +8,13 @@ var li = document.getElementById("li");
 var main = document.querySelector("main");
 var container = document.getElementById("quizContainer");
 var body = document.getElementById("content");
+var liClass = document.getElementsByClassName("ans1");
 
-var score;
+var score = 0;
+var questionNumber;
+var text
+
+var timeInterval
 
 const questions = [
   "Commonly used date types do NOT include:",
@@ -29,76 +34,146 @@ const q4Amswers = ["Commas", "Curly Brackets", "Quotes", "Parentheses"]
 
 const q5Answers = ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"]
 
-const quiz = {
-  "question1": {
+const quiz = [
+   {
     options: ["Strings", "Booleans", "Alerts", "Numbers"],
-    answer: "Alerts"
+    answer: "Alerts",
+    title: "Commonly used date types do NOT include:"
+
 
   }, 
-  "question2": {
+  {
     options: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
-    answer: "Parentheses"
+    answer: "Parentheses",
+    title: "The condition in an if/else statement is enclosed within _____."
 
   },
-  "question3": {
+ {
     options: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
-    answer: "All of the Above"
+    answer: "All of the Above",
+    title: "Arrays in JavaScript can be used to store _____."
 
   }, 
-  "question4": {
+{
     options: ["Commas", "Curly Brackets", "Quotes", "Parentheses"],
-    answer: "Quotes"
+    answer: "Quotes",
+    title: "String values must be enclosed within _____ when being assigned to variables."
 
   },
-  "question5": {
+{
     options: ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"],
-    answer: "console.log"
+    answer: "console.log",
+    title: "A very useful tool used during development and debugging for printing content to the debugger is:"
   }
-}
+]
 
-function quizStart() {
-  for (let i = 0; i < q1Answers.length; i++) {
-    var text = q1Answers[i];
+var currentQuestion = 0
+
+function getQuestion() {
+  listEl.innerHTML = ""
+  for (let i = 0; i < quiz[currentQuestion].options.length; i++) {
+    var text = quiz[currentQuestion].options[i];
     var li = document.createElement("li")
     li.textContent = text;
     listEl.appendChild(li)
+    $("li").eq(i).addClass("answer")
   }
-
-  function clickEvent(userAnswer, questionNumber) {
-    event.target.value
-    quizHeadEl.textContent = questions[0]
-    userAnswer = clickEvent
-    questionNumber = "question1"
-    if (userAnswer === quiz[questionNumber].answer) {
-      console.log("correct")
-    } else {
-      console.log("incorrect")
-      console.log("subtract from timer")
-    }
-  }
-  clickEvent("Alerts", "question1")
+  quizHeadEl.textContent = quiz[currentQuestion].title
+  questionNumber = `question${currentQuestion}`
 }
+
+function quizStart(event) {
+  linePre.remove()
+  startTimer()
+  getQuestion()
+}
+
+function checkAnswer(event) {
+  // questionNumber = "question1"
+  console.log(currentQuestion)
+  console.log(quiz[currentQuestion])
+  var correctAnswer = quiz[currentQuestion].answer
+  if (correctAnswer === event.target.textContent) {
+    console.log("correct")
+    score += 10
+    console.log(score)
+  } else {
+    console.log("incorrect")
+    score -= 5
+    console.log(score)
+    // subtract from timer
+  }
+  currentQuestion++
+  if (currentQuestion < quiz.length) {
+    getQuestion();
+  } else {
+    console.log("something")
+    clearInterval(timeInterval);
+    endQuiz();
+    return
+  }
+}
+
+function endQuiz() {
+  $("#list").addClass("hide")
+  $(listEl).removeAttr("id")
+  quizHeadEl.textContent = "The quiz is over!"
+  quizHeadEl.style.textAlign = "center"
+  console.log(score)
+  var p = document.createElement("p")
+  $(p).insertAfter("hr")
+  p.textContent = "Your final score is " + score + "."
+}
+
+
+
+$("#start").on("click", function(event) {
+  quizStart(event)
+  startBtn.remove()
+})
+
+$("ul").on("click", ".answer", function(event) {
+  checkAnswer(event)
+})
 
 function startTimer() {
   var timeLeft = 180;
 
-  var timeInterval = setInterval(function () {
+  timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = "Timer: " + timeLeft + "s Remaining."
 
     if(timeLeft === 0) {
       clearInterval(timeInterval);
-      quizEnd();
+      // quizEnd();
     }
   }, 1000);
 }
 
-startBtn.addEventListener("click", function() {
-  startBtn.remove()
-  linePre.remove()
-  quizStart()
-  startTimer()
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function clickEvent(userAnswer, questionNumber) {
