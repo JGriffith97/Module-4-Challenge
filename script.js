@@ -9,30 +9,32 @@ var main = document.querySelector("main");
 var container = document.getElementById("quizContainer");
 var body = document.getElementById("content");
 var liClass = document.getElementsByClassName("ans1");
+var inputClass = document.getElementsByClassName("input-form")
 
+var initials
 var score = 0;
 var questionNumber;
 var text
 
 var timeInterval
 
-const questions = [
-  "Commonly used date types do NOT include:",
-  "The condition in an if/else statement is enclosed within _____.", 
-  "Arrays in JavaScript can be used to store _____.", 
-  "String values must be enclosed within _____ when being assigned to variables.",
-  "A very useful tool used during development and debugging for printing content to the debugger is:"
-]
+// const questions = [
+//   "Commonly used date types do NOT include:",
+//   "The condition in an if/else statement is enclosed within _____.", 
+//   "Arrays in JavaScript can be used to store _____.", 
+//   "String values must be enclosed within _____ when being assigned to variables.",
+//   "A very useful tool used during development and debugging for printing content to the debugger is:"
+// ]
 
-const q1Answers = ["Strings", "Booleans", "Alerts", "Numbers"]
+// const q1Answers = ["Strings", "Booleans", "Alerts", "Numbers"]
 
-const q2Answers = ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"]
+// const q2Answers = ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"]
 
-const q3Answers = ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"]
+// const q3Answers = ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"]
 
-const q4Amswers = ["Commas", "Curly Brackets", "Quotes", "Parentheses"]
+// const q4Amswers = ["Commas", "Curly Brackets", "Quotes", "Parentheses"]
 
-const q5Answers = ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"]
+// const q5Answers = ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"]
 
 const quiz = [
    {
@@ -121,10 +123,21 @@ function endQuiz() {
   quizHeadEl.style.textAlign = "center"
   console.log(score)
   var p = document.createElement("p")
+  var inputInitials = document.createElement("input")
+  inputInitials.type = "text"
+  inputInitials.name = "initials"
+  inputInitials.placeholder = "Enter initials; e.g.: JG"
+  inputInitials.maxLength = "3"
   $(p).insertAfter("hr")
   p.textContent = "Your final score is " + score + "."
+  $(".input-form").append(inputInitials)
+  $("#form-hide").removeAttr("id")
 }
 
+function displayHS() {
+  quizHeadEl.textContent = "HighScores"
+
+}
 
 
 $("#start").on("click", function(event) {
