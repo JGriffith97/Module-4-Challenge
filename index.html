@@ -14,22 +14,25 @@
     <!-- Commit highscores to local storage -->
     <header class = "headContainer">
       <div id = "showHigh">HighScores</div>
-      <div id = "timer">Timer: 180s Remaining.</div>  <!-- 240 being a proof of concept placeholder -->
+      <div id = "timer">Timer: 60s Remaining.</div>  <!-- 240 being a proof of concept placeholder -->
     </header>
 
       <main>
         <div class="quiz-container" id="quiz-container">
-          <h3 id="quizHead">Code Quiz</h3>
-          <hr>
+          <h3 class= "select" id="quizHead">Code Quiz</h3>
+          <hr class= "select">
         <!-- Quiz Area; ordered/unordered list? -->
         <!-- Properties assigned to the ul affect the entire list -->
-            <ul id = "list">
+            <ul class= "select" id = "list">
               <li id= "li-pre">Click the button below to start!</li>
             </ul>
         <!-- Start Quiz Button -->
-            <button class = "start" id= "start">Start</button>
-            <div class = "input-form" id = "form-hide">
+            <button class = "start select" id= "start">Start</button>
+            <div class = "input-form select" id = "form-hide">
+              <form class = "select" id = "initials">
+              </form>
             </div>
+            <ul class = "hideHs" id = "hs-list"></ul>
         </div>
 
 

@@ -103,6 +103,24 @@ p {
   text-align: center;
 }
 
+.input-form {
+  padding: 5px 0 0 0;
+  display: block;
+  text-align: center;
+  height: 20px;
+}
+
+::placeholder {
+  font-size: 16px;
+  font-style: italic;
+  vertical-align: bottom;
+  /* padding: 2px 0 2px 0 */
+}
+
+#form-hide {
+  display: none;
+}
+
 /* Make media queries, slould try to build mobile first */
 @media screen and (min-width: 768px) {
 
@@ -199,6 +217,19 @@ p {
   }
 
   #form-hide {
+    display: none;
+  }
+
+  #hs-list,
+  .lines {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .hideHs {
     display: none;
   }
 }

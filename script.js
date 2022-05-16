@@ -10,11 +10,26 @@ var container = document.getElementById("quizContainer");
 var body = document.getElementById("content");
 var liClass = document.getElementsByClassName("ans1");
 var inputClass = document.getElementsByClassName("input-form")
+var initialsForm = document.getElementById("initials")
+var submitButton = document.getElementById("submitBtn")
+var highscrList = document.getElementById("hs-list")
+
+var inputInitials = document.createElement("input")
+var inputSubmit = document.createElement("input")
 
 var initials
 var score = 0;
+var userScore
 var questionNumber;
 var text
+
+var userHighScore = initials + "      " + userScore + "."
+
+var hS = [];
+
+for (var i = 0; i < hS.length; i++) {
+
+}
 
 var timeInterval
 
@@ -119,24 +134,51 @@ function checkAnswer(event) {
 function endQuiz() {
   $("#list").addClass("hide")
   $(listEl).removeAttr("id")
+  userScore = score
   quizHeadEl.textContent = "The quiz is over!"
   quizHeadEl.style.textAlign = "center"
   console.log(score)
   var p = document.createElement("p")
-  var inputInitials = document.createElement("input")
   inputInitials.type = "text"
   inputInitials.name = "initials"
-  inputInitials.placeholder = "Enter initials; e.g.: JG"
+  inputInitials.placeholder = "Enter initials; e.g.: JRG"
   inputInitials.maxLength = "3"
+  $(inputInitials).attr("id", "userInput")   // Line 133 and 136 written in jQuery form 
+  inputSubmit.type = "submit"
+  inputSubmit.name = "submitButton"
+  $(inputSubmit).attr("id", "submitBtn")
   $(p).insertAfter("hr")
   p.textContent = "Your final score is " + score + "."
-  $(".input-form").append(inputInitials)
+  $(initialsForm).append(inputInitials)
+  $(initialsForm).append(inputSubmit)
   $("#form-hide").removeAttr("id")
+  timerEl.textContent = "Timer: 0s Remaining"
+}
+
+function getInitials(event) {
+  var userInitials = document.getElementById("userInput").value
+  if (userInitials < inputInitials.maxLength -2) {
+    inputInitials.placeholder = "Must be 2 or 3 chars!"
+  } else {
+    initials = userInitials + "      " + userScore
+    hS.push(initials);
+  }
+}
+
+function postHS(event) {
+  for (var i = 0; i < hS.length; i++) {
+    var highScr = hS[i];
+    
+    var hsLi = document.createElement("li");
+    hsLi.textContent = highScr
+    hsLi.setAttribute("data-index", i);
+
+    highscrList.appendChild(hsLi);
+  }
 }
 
 function displayHS() {
   quizHeadEl.textContent = "HighScores"
-
 }
 
 
@@ -149,6 +191,13 @@ $("ul").on("click", ".answer", function(event) {
   checkAnswer(event)
 })
 
+$("#initials").on("submit", function(event) {
+  getInitials(event)
+  postHS(event)
+  event.preventDefault()
+})
+
+
 function startTimer() {
   var timeLeft = 180;
 
@@ -158,35 +207,11 @@ function startTimer() {
 
     if(timeLeft === 0) {
       clearInterval(timeInterval);
+      timerEl.textContent = "Timer: 0s Remaining."
       // quizEnd();
     }
   }, 1000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // function clickEvent(userAnswer, questionNumber) {
