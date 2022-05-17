@@ -14,30 +14,36 @@ body {
   display: flex;
   flex-direction: row;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   border-bottom: solid 5px rgb(0, 110, 255);
 }
 
 #showHigh {
   background-color: black;
   color: white;
+  display: flex;
   flex: 50%;
-  padding: 5px 0 5px 0;
   border: solid 4px antiquewhite;
   border-right: solid 2px antiquewhite;
   border-left: solid 4px antiquewhite;
   font-family: monospace, Courier, 'Courier New';
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0 5px 0;
 }
 
 #timer {
   background-color: black;
   color: white;
+  display: flex;
   flex: 50%;
-  padding: 5px 0 5px 0;
   border: solid 4px antiquewhite;
   border-left: solid 2px antiquewhite;
   border-right: solid 4px antiquewhite;
   font-family: monospace, Courier, 'Courier New';
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0 5px 0;
 }
 
 .quiz-container {
@@ -80,6 +86,56 @@ hr {
 li {
   border: solid black 4px;
   border-radius: 10px;
+  padding: 5px 8px 3px 8px;
+  margin: 0 auto 6px 0;
+  background-color: rgb(80, 80, 80);
+  color: white;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+p {
+  margin-top: 5px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.input-form {
+  padding: 5px 0 0 0;
+  display: block;
+  text-align: center;
+  height: 20px;
+}
+
+::placeholder {
+  font-size: 16px;
+  font-style: italic;
+  vertical-align: bottom;
+  /* padding: 2px 0 2px 0 */
+}
+
+#form-hide {
+  display: none;
+}
+
+#hs-list {
+  display: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#play-again-btn {
+  display: none;
+  margin: 8px auto 0 auto;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 /* Make media queries, slould try to build mobile first */
@@ -102,6 +158,7 @@ li {
     border-right: solid 2px antiquewhite;
     border-left: solid 4px antiquewhite;
     font-family: monospace, Courier, 'Courier New';
+    cursor: pointer;
   }
   
   #timer {
@@ -120,7 +177,7 @@ li {
     display: flex;
     flex-direction: column;
     background-color: lightblue;
-    padding: 15px 25px 5px 25px;
+    padding: 15px 25px 15px 25px;
     margin: 15rem auto 0 auto;
     text-align: left;
     width: 50%;
@@ -130,6 +187,10 @@ li {
   .start {
     width: 100%;
     cursor: pointer;
+  }
+
+  .hide {
+    display: none;
   }
 
   #list {
@@ -156,5 +217,47 @@ li {
   li:hover {
     transition: 0.2s ease-in;
     box-shadow: 1px 1px 5px black;
+  }
+
+  .input-form {
+    padding: 5px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+  }
+
+  ::placeholder {
+    font-size: 16px;
+    font-style: italic;
+    vertical-align: bottom;
+    /* padding: 2px 0 2px 0 */
+  }
+
+  #form-hide {
+    display: none;
+  }
+
+  #hs-list {
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lines {
+    display: block;
+    margin: 0 auto 0 auto;
+    width: 200px;
+  }
+
+  #play-again-btn {
+    display: none;
+    margin: 8px auto 0 auto;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 28px;
+    cursor: pointer;
   }
 }
