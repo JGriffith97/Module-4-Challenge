@@ -12,4 +12,4 @@ Screenshot: [Site Screenshot](./Screenshot%202022-05-16%20194353.png)
 >
 >Script: [Script](./script.js)
 
-Live Site: (wait)
+Live Site: https://jgriffith97.github.io/Module-4-Challenge/
