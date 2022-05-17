@@ -121,6 +121,23 @@ p {
   display: none;
 }
 
+#hs-list {
+  display: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#play-again-btn {
+  display: none;
+  margin: 8px auto 0 auto;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
 /* Make media queries, slould try to build mobile first */
 @media screen and (min-width: 768px) {
 
@@ -141,6 +158,7 @@ p {
     border-right: solid 2px antiquewhite;
     border-left: solid 4px antiquewhite;
     font-family: monospace, Courier, 'Courier New';
+    cursor: pointer;
   }
   
   #timer {
@@ -159,7 +177,7 @@ p {
     display: flex;
     flex-direction: column;
     background-color: lightblue;
-    padding: 15px 25px 5px 25px;
+    padding: 15px 25px 15px 25px;
     margin: 15rem auto 0 auto;
     text-align: left;
     width: 50%;
@@ -220,16 +238,26 @@ p {
     display: none;
   }
 
-  #hs-list,
-  .lines {
-    display: flex;
+  #hs-list {
+    display: none;
     text-align: center;
-    align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    align-items: center;
   }
 
-  .hideHs {
+  .lines {
+    display: block;
+    margin: 0 auto 0 auto;
+    width: 200px;
+  }
+
+  #play-again-btn {
     display: none;
+    margin: 8px auto 0 auto;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 28px;
+    cursor: pointer;
   }
 }

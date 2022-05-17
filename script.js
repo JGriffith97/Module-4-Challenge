@@ -13,6 +13,7 @@ var inputClass = document.getElementsByClassName("input-form")
 var initialsForm = document.getElementById("initials")
 var submitButton = document.getElementById("submitBtn")
 var highscrList = document.getElementById("hs-list")
+var playAgn = document.getElementById("play-again-btn")
 
 var inputInitials = document.createElement("input")
 var inputSubmit = document.createElement("input")
@@ -27,29 +28,8 @@ var userHighScore = initials + "      " + userScore + "."
 
 var hS = [];
 
-for (var i = 0; i < hS.length; i++) {
-
-}
-
 var timeInterval
-
-// const questions = [
-//   "Commonly used date types do NOT include:",
-//   "The condition in an if/else statement is enclosed within _____.", 
-//   "Arrays in JavaScript can be used to store _____.", 
-//   "String values must be enclosed within _____ when being assigned to variables.",
-//   "A very useful tool used during development and debugging for printing content to the debugger is:"
-// ]
-
-// const q1Answers = ["Strings", "Booleans", "Alerts", "Numbers"]
-
-// const q2Answers = ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"]
-
-// const q3Answers = ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"]
-
-// const q4Amswers = ["Commas", "Curly Brackets", "Quotes", "Parentheses"]
-
-// const q5Answers = ["JavaScript", "Terminal/gitBash", "for Loops", "console.log"]
+var timeLeft = 40
 
 const quiz = [
    {
@@ -103,6 +83,7 @@ function quizStart(event) {
   linePre.remove()
   startTimer()
   getQuestion()
+  return
 }
 
 function checkAnswer(event) {
@@ -117,6 +98,7 @@ function checkAnswer(event) {
   } else {
     console.log("incorrect")
     score -= 5
+    timeLeft -= 10
     console.log(score)
     // subtract from timer
   }
@@ -145,9 +127,9 @@ function endQuiz() {
   inputInitials.maxLength = "3"
   $(inputInitials).attr("id", "userInput")   // Line 133 and 136 written in jQuery form 
   inputSubmit.type = "submit"
-  inputSubmit.name = "submitButton"
   $(inputSubmit).attr("id", "submitBtn")
   $(p).insertAfter("hr")
+  $(p).attr("class", "select")
   p.textContent = "Your final score is " + score + "."
   $(initialsForm).append(inputInitials)
   $(initialsForm).append(inputSubmit)
@@ -156,12 +138,20 @@ function endQuiz() {
 }
 
 function getInitials(event) {
+  var select = document.querySelectorAll(".select")
   var userInitials = document.getElementById("userInput").value
   if (userInitials < inputInitials.maxLength -2) {
     inputInitials.placeholder = "Must be 2 or 3 chars!"
   } else {
-    initials = userInitials + "      " + userScore
+    initials = userInitials + " scored " + userScore
     hS.push(initials);
+    userInitials.value = ""
+    initialsForm.remove();
+    for (let i = 0; i < select.length; i++) {
+      select[i].style.display = "none"
+    }
+    storeHs()
+    displayHS()
   }
 }
 
@@ -170,17 +160,44 @@ function postHS(event) {
     var highScr = hS[i];
     
     var hsLi = document.createElement("li");
+    hsLi.setAttribute("class", "lines")
     hsLi.textContent = highScr
     hsLi.setAttribute("data-index", i);
 
     highscrList.appendChild(hsLi);
+    // highscrList.style.display = "block"
   }
+  return
+}
+
+function clear() {
+  var select = document.querySelectorAll(".select")
+  for (let i = 0; i < select.length; i++) {
+    select[i].style.display = "none"
+  }
+  return
 }
 
 function displayHS() {
+  clear()
   quizHeadEl.textContent = "HighScores"
+  highscrList.style.display = "block"
+  playAgn.style.display = "block"
 }
 
+function init() {
+  var storedHs = JSON.parse(localStorage.getItem("hS"))
+
+  if (storedHs !== null) {
+    hS = storedHs;
+  }
+
+  postHS()
+}
+
+function storeHs() {
+  localStorage.setItem("hS", JSON.stringify(hS))
+}
 
 $("#start").on("click", function(event) {
   quizStart(event)
@@ -195,23 +212,34 @@ $("#initials").on("submit", function(event) {
   getInitials(event)
   postHS(event)
   event.preventDefault()
+
+  storeHs()
+})
+
+$("#showHigh").on("click", function(event) {
+  displayHS()
+})
+
+$(playAgn).on("click", function(event) {
+  location.reload()
 })
 
 
 function startTimer() {
-  var timeLeft = 180;
-
   timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = "Timer: " + timeLeft + "s Remaining."
 
     if(timeLeft === 0) {
+      endQuiz()
       clearInterval(timeInterval);
       timerEl.textContent = "Timer: 0s Remaining."
       // quizEnd();
     }
   }, 1000);
 }
+
+init()
 
 
 // function clickEvent(userAnswer, questionNumber) {
