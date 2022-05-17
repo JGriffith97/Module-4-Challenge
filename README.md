@@ -2,7 +2,7 @@
 
 ## The goal of this assignment was to make a coding quiz from the ground-up using HTML, CSS and JavaScript
 
-Screenshot: [Site Screenshot](./Screenshot%202022-05-16%20194353.png)
+Screenshot: ![Site Screenshot](./Screenshot%202022-05-16%20194353.png)
 
 >**Open Code Files:**
 >
